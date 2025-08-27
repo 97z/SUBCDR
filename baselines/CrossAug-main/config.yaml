@@ -1,0 +1,40 @@
+CrossAug:
+  embedding_size: 128
+  shared_dim: 64
+  epoch: 100
+  neg_ratio: 1
+  n_layers: 2
+  reg_weight: 0.001
+  batch_size: 1024
+  cbatch_size: 512
+  drop_rate: 0.3
+  optim: Adam
+AbtCDR:
+  embedding_size: 64
+  optim: Adam
+  batch_size: 1024
+  epoch: 200
+  neg_ratio: 1
+
+
+datasets:
+  Amazon:
+    Toy-Video:
+      path: "./datasets/processed/Amazon_paper/Toy-Video"
+      n_shared_users: 1064
+      domain_1:
+        name: "Toy"
+        n_users: 34559
+        n_items: 19003
+        n_train: 218370
+        n_valid: 34559
+        n_test: 34559
+      domain_2:
+        name: "Video"
+        n_users: 17460
+        n_items: 7323
+        n_train: 119138
+        n_valid: 17460
+        n_test: 17460
+
+    

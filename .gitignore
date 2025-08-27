@@ -1,0 +1,8 @@
+.vscode
+*temp*
+wandb
+__pycache__
+log*
+metric_results
+gcn_test
+saved

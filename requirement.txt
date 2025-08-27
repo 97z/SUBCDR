@@ -1,0 +1,5 @@
+conda install pytorch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 -c pytorch
+pip install recbole -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install wandb
+pip install torch-geometric
+pip install scipy==1.11.3

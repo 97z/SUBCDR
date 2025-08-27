@@ -1,0 +1,94 @@
+#实验参数
+transfer: False
+graph_layer: rgcn_v2
+graph_con: True
+user_similary_type: profile
+overlap: no
+#共享图+user_user+门控
+global_user_gate:
+  base: False #基础，如果要进行这个实验就要为True
+  global_user_gate_v2: False
+  global_user_gate_v3: False
+  global_user_gate_v4: False #使用MGRec的gate,但是前面不乘参数
+  global_user_gate_v5: False #使用MGRec的gate,但是前面乘参数
+mean_agg: False #在forward部分不再拼接成一个长的embedding而是取平均
+#base: False
+global_local_base: False
+global_local_align: False
+global_local_align_simi_top_last_1: False
+graph_denoise: False
+user_user_file: "dataset/Amazon/Amazon_video/similarity_tags.txt"
+user_profile_file: ""
+shared_graph: False
+bi_shared_graph: False
+# src_user_user_file: "dataset/Amazon/Amazon_toy/similarity_tags.txt"
+
+global_lambda_gate: 0.5
+reg_weight: 0.001
+
+n_hh_bool : False
+
+al: False
+add_user: False
+add_user_plus: False
+add_user_lambda: False
+add_user_mlp: False
+llm_init_embedding: False
+llm_mode: "pca"
+llm_add_embedding_w_o_train: False
+llm_add_embedding_train: False
+llm_init_mlp_train: False
+llm_init_mlp_layer4_train: False
+llm_init_mlp_residual_train: False
+llm_init_mlp_layer3_lastnorm_train: False
+device: cuda
+neg_valid_num: 99
+n_hh : 8
+l_alpha: 0.7
+cd_alpha: 0.7
+ll: 1
+cdl: 1
+al_para: 0.5
+out_dim: 128
+
+#embedding_size: 64
+#alpha: 0.2                        # (float) ratio of source domain loss in the final loss term
+#lambda: 0                         # (float) source reg loss weight
+#gamma: 0                          # (float) target reg loss weight
+#delta: 1e-5
+#transform_weight: 1               #weight term on the transform matrix residual
+#delta: 0
+#delta: 1e-5
+cosine_threshold: 0.6
+checkpoint_dir: saved
+weight_decay: 1e-6
+user_transform: 1                 # (int) 0 for no user transformation matrix, 1 for opposite.
+loss_term: 1                      # (int) 0 for no contrastive loss; 1 for supervised contrastive loss; 2 for simplified version, which does not work.
+loss_type: BPR                    # (str) CE or BPR, this indicates the input_type of the model when input_type is not specified by the model
+#train_epochs: ["TARGET:300","SOURCE:0","BOTH:20","BOTH:20","BOTH:20","BOTH:20","BOTH:20","BOTH:20","BOTH:20","BOTH:20","BOTH:20","BOTH:20","BOTH:20","BOTH:20"]
+train_epochs: ["BOTH:300","TARGET:0","SOURCE:0"]
+#joint_learning: 1
+#additional_user_samp: 0
+#raw_embedding_loss: 1
+#sim_emb_name: 'sim_emb_sports_target_gcn12.pkl'
+
+train_neg_sample_args:
+  distribution: uniform
+  sample_num: 1
+  alpha: 1.0
+
+#single_model:          # (dict) config of the backbone single model
+#  name: LightGCN       #remember to change sample_num
+#  n_layers: 1
+#
+#  #name: MF
+#
+#  #name: SimpleX
+#  margin: 0.5                     # (float) The margin to filter negative samples. Range in [-1, 1].
+#  #negative_weight: 10             # (int) Weight to balance between positive-sample and negative-sample loss.
+#  #gamma: 0.5                      # (float) Weight for fusion of user' and interacted items' representations.
+#  #aggregator: 'self_attention'    # (str) The item aggregator ranging in ['mean', 'user_attention', 'self_attention'].
+#  #history_len: 50                 # (int) The length of the user's historical interaction items.
+#  require_pow: False                # (bool) Whether or not to perform power operation in EmbLoss.
+#  reg_weight: 0                   # (float) The L2 regularization weights.
+

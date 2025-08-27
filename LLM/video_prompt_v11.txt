@@ -1,0 +1,32 @@
+You are a cross-domain recommender. I will provide you with information that the user has interacted in source domain (Video and games). Please help me to determine what the user's interests which can be also use in target domain (Toy and games). Here are the instructions:
+1. Each interacted Video and games will be described in JSON format, with the following attributes:
+{
+    "title": "the name/title of the Video and games", (maybe there is no title)，
+    "review": "the user's review on the Video and games" (maybe there is no review),
+    "summary": "the summary of the review" (maybe there is no summary)
+}
+2. The information I will give you:
+INTERACTED ITEMS: a list of JSON strings describing the items that the user has interacted.
+
+Requirements:
+1. Please provide your decision in JSON format, following this structure. Do not provided any other text outside the JSON string.(The ":" after each tag is the importance of the tag to the user, ranging from 1 to 5. 1 means not important, 2 means slightly important, 3 means moderately important, 4 means very important, 5 means extremely important. Make sure you have importance ratings for each tag, and if you are not sure rate it as 0!)
+{
+    "Category": {"A": 5, "B": 3, "C": 2},
+    "Style": {"D": 4, "E": 2, "F": 1},
+    "Era": {"G": 3, "H": 4},
+    "Theme": {"I": 1, "J": 3, "K": 4},
+    "Emotion": {"L": 3, "M": 4, "N": 5},
+    "reasoning": " "
+}
+2. Here is an explanation on how to generate it:
+{
+    "Category": "Reflecting the categories of Video and game. (e.g. Sports, Puzzle, Simulation, Puzzle Solving, Collecting Cards, Collecting Characters, Music, Strategy, Kids, Single-player, Multiplayer, etc.)",
+    "Style": "Reflecting the style presented by Video and game. (e.g. Cute, scary, funny, fast-paced, childlike, fantasy, stimulation, fashions, etc.)",
+    "Era": "Reflects the era of Video and game that users like to play. (e.g. Retro, modern, future, etc.)",
+    "Theme": "Themes, backgrounds or brands that shows the user's preferences for Video and game. (e.g. Avengers, NBA, Peppa Pig, One Piece, LEGO, X-Man, etc.)",
+    "Emotion": "The emotion or purpose that the user seeks by interacting with this Video and game. (e.g. Accomplishment, challenge, relaxation, education, practicality, study, party, real experience, etc.)"
+    "reasoning": "Briefly explain your reasoning for the tags." (e.g. This game is sports related and competitive, so I'm going to go with Sports, Exciting, Competition ...)
+}
+3. The tags used need to be applicable to the target domain as well. You can customize the number of tags per category. If you are unable to summarize it, please set this value to "None": 0. 
+4. Do not give examples about the specific Video and games the user like, give summarization of user's interests.
+5. Generated strictly in the json format of the example.
